@@ -11,11 +11,16 @@ class School
     def add_student(name, grade)
         @student = name
         @grade = grade
-        if @roster.key?(@grade)
-            @roster[@grade].push(@student)
-        else
-            @roster[@grade] = [@student]
-        end
+
+        # Elegant conditional loop to populate the roster
+        @roster[@grade] = [] unless @roster.key?(@grade)
+        @roster[@grade].push(@student)
+
+        # if @roster.key?(@grade)
+        #     @roster[@grade].push(@student)
+        # else
+        #     @roster[@grade] = [@student]
+        # end
       
     end
 
@@ -25,7 +30,6 @@ class School
     
     def sort
             sorted = @roster.each{|grades, names| names.sort!}
-            sorted
     end
 
 end
